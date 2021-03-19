@@ -1,20 +1,10 @@
  - name: Copy to remote
-   hosts: localhost
+   hosts: webservers
+   become: True
    tasks:
     - name: adding in local host
-      add_host:
-        name: 52.27.133.89
-        groups: mylocalinstance
-    
- - name: Gather EC2 facts
-   hosts: mylocalinstance
-   become: yes
-   gather_facts: no
-   vars:
-     region: us-west-2
-    
-   remote_user: ubuntu   
-   tasks: 
-    - copy:
+      copy:
         src: /var/lib/jenkins/workspace/AnsibleDemo2/HelloWorld.py
         dest: /home/ubuntu/helloworld/
+
+  
