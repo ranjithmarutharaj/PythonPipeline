@@ -2,9 +2,13 @@
    hosts: webservers
    become: True
    tasks:
-    - name: adding in local host
+    - name: Copying python files
       copy:
         src: /var/lib/jenkins/workspace/AnsibleDemo2/HelloWorld.py
         dest: /home/ubuntu/helloworld/
+    - name: Deploy static website
+      copy:
+        src: index.html
+        dest: /var/www/html/
 
   
